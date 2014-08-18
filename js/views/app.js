@@ -51,7 +51,40 @@ app.AppView = Backbone.View.extend({
         this.allCheckbox.checked = !remaining;
     },
     filterOne: function (todo) {
+<<<<<<< HEAD
         todo.trigger('visible')
+=======
+        todo.trigger('visible');
+    },
+    filterAll: function () {
+        app.Todos.each(this.filterOne(), this);
+    },
+    newAttributes: function () {
+        return {
+            title: this.$input.val().trim(),
+            order: app.Todos.nextOrder(),
+            completed: false
+        }
+    },
+    createOnEnter: function () {
+        if (event.which !== ENTER_KEY || this.$input.val().trim()) {
+            return;
+        }
+        app.Todos.create(this.newAttributes());
+        this.$input.val('');
+    },
+    clearCompleted: function () {
+        _.invoke(app.Todos.completed(), 'destroy');
+        return false;
+    },
+    toggleAllComplete: function () {
+        var completed = this.allCheckbox.checked;
+        app.Todos.each(function (todo) {
+            todo.save({
+                completed: false
+            })
+        })
+>>>>>>> Finished developing.
     }
 })
 ;
