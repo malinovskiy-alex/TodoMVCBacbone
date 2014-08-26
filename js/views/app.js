@@ -51,9 +51,6 @@ app.AppView = Backbone.View.extend({
         this.allCheckbox.checked = !remaining;
     },
     filterOne: function (todo) {
-<<<<<<< HEAD
-        todo.trigger('visible')
-=======
         todo.trigger('visible');
     },
     filterAll: function () {
@@ -84,7 +81,6 @@ app.AppView = Backbone.View.extend({
                 completed: false
             })
         })
->>>>>>> Finished developing.
     }
 })
 ;
