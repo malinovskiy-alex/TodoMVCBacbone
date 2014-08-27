@@ -6,7 +6,11 @@ var Workspace = Backbone.Router.extend({
         '*filter': 'setFilter'
     },
     setFilter: function (param) {
-        window.app.Todos.trigger('filter');
+        app.TodoFilter = param || '';
+
+        // Trigger a collection filter event, causing hiding/unhiding
+        // of Todo view items
+        app.Todos.trigger('filter');
     }
 });
 app.TodoRouter = new Workspace();

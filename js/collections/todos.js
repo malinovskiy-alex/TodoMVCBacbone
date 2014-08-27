@@ -8,12 +8,10 @@ var TodoList = Backbone.Collection.extend({
     model: app.Todo,
     localStorage: new Backbone.LocalStorage('todos-backbone'),
     completed: function () {
-        return this.filter(function (todo) {
-            return todo.get('completed')
-        })
+        return this.where({completed: true});
     },
     remaining: function () {
-        return this.without.apply(this, this.completed())
+        return this.where({completed: false});
     },
     nextOrder: function () {
         if (!this.length) {
